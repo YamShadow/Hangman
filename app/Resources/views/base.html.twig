@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Login !{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1>
+                <a href="/">Hangman</a>
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="first current_page_item">
+                    <a href="{{ path('Game') }}">Game</a>
+                </li>
+                <li>
+                    <a href="{{ path('Register') }}">Register</a>
+                </li>
+                <li>
+                    <a href="{{ path('Login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ path('Contact') }}">Contact</a>
+                </li>
+            </ul>
+            <br class="clearfix" />
+        </div>
+    </div>
+
+    <div id="page">
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="sidebar">
+            {% block sidebar %}{% endblock %}
+        </div>
+
+        <br class="clearfix" />
+    </div>
+</div>
+
+</body>
+</html>
