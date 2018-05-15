@@ -1,0 +1,7 @@
+# app/Resources/translations/messages.en.yml
+game.h2: Guess the mysterious world
+
+form.sendLabel: Send
+form.emailLabel: Email
+form.subjectLabel: Subject
+form.messageLabel: Message

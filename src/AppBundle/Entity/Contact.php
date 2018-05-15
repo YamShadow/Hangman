@@ -1,68 +1,62 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shado
- * Date: 02/05/2018
- * Time: 15:50
- */
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Contact
 {
 
+    /**
+     * @Assert\NotBlank
+     */
     private $subject;
-    private $email;
-    private $message;
 
     /**
-     * @return mixed
+     * @Assert\NotBlank
+     * @Assert\Email
      */
+    private $email;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 50,
+     * )
+
+     */
+    private $message;
+
     public function getSubject()
     {
         return $this->subject;
     }
 
-    /**
-     * @param mixed $subject
-     */
     public function setSubject($subject)
     {
         $this->subject = $subject;
     }
 
-    /**
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     * @param mixed $email
-     */
     public function setEmail($email)
     {
         $this->email = $email;
     }
 
-    /**
-     * @return mixed
-     */
     public function getMessage()
     {
         return $this->message;
     }
 
-    /**
-     * @param mixed $message
-     */
     public function setMessage($message)
     {
         $this->message = $message;
     }
-    private $message;
 
 }
+

@@ -7,9 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Contact;
-/***
- * Class ContactController
- * @package AppBundle\Controller
+use AppBundle\Form\Type\ContactType;
+
+/**
+ * @Route(
+ *     "/{_locale}"
+ * )
  */
 class ContactController extends Controller
 {
@@ -22,19 +25,14 @@ class ContactController extends Controller
      * )
      * @return Response
      */
-    public function contact(Request $request){
+    public function contactAction(Request $request){
 
         $contact = new Contact();
         dump($contact);
 
-
-        $form = $this->createFormBuilder($contact)
-            ->add('email')
-            ->add('subject')
-            ->add('message')
-            ->getForm();
-
-        $form->handleRequest($request);
+        $form =  $this
+                    ->createForm(ContactType::class, $contact)
+                    ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             dump($form->getData());

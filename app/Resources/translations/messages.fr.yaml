@@ -1,0 +1,7 @@
+# app/Resources/translations/messages.fr.yml
+game.h2: Devinez le mot mystérieux
+
+form.sendLabel: Envoyer
+form.emailLabel: Courriel
+form.subjectLabel: Sujet
+form.messageLabel: Message

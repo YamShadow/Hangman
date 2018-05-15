@@ -7,9 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/***
- * Class SecurityController
- * @package AppBundle\Controller
+/**
+ * @Route(
+ *     "/{_locale}"
+ * )
  */
 class SecurityController extends Controller
 {

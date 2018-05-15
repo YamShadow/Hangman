@@ -7,10 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/***
+/**
+ * @Route(
+ *     "/{_locale}"
+ * )
  * Class GameController
  * @package AppBundle\Controller
  */
+
 class GameController extends Controller
 {
 
