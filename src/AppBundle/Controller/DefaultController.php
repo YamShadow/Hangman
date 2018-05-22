@@ -26,4 +26,11 @@ class DefaultController extends Controller
             'name' => $name
         ]);
     }
+
+    /**
+     * @Route("/")
+     */
+    public function indexAction() {
+        return $this->redirectToRoute('Game');
+    }
 }

@@ -4,4 +4,7 @@ app:
 home:
     path: '/'
     defaults:
-        _controller: AppBundle:Game:game
+        _controller: AppBundle:Game:Game
+
+logout:
+    path: '/logout'

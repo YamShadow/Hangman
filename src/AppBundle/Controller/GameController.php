@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\Dictionnary;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +27,16 @@ class GameController extends Controller
      * )
      * @return Response
      */
-    public function game(Request $request){
+    public function indexAction(Dictionnary $dictionnary)
+    {
+
+        //1. Créer le service dictionnary
+        //2. Récupérer le service dans cette méthode
+        //3. Définir un tableau de mots dans le service (constante ? ... )
+        //4. La méthode getRandom() du service doit renvoyer le mot aléatoire
+
+        $word = $dictionnary->getRandom();
+        dump($word);
         return $this->render('game/game.html.twig');
     }
 

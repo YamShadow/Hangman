@@ -21,6 +21,14 @@ Released   : 20120125
     This license is copied below, and is also available with a FAQ at:
     http://scripts.sil.org/OFL
  */
+
+* {
+    box-sizing: initial;
+}
+
+.hidden{
+    display: inline-block!important;
+}
 @font-face {
   font-family: 'Arvo';
   font-style: normal;

@@ -19,7 +19,6 @@ class RegisterType extends AbstractType {
         $builder
             ->add('email', EmailType::class, ['label' => 'registerForm.emailLabel'])
             ->add('password', RepeatedType::class, array(
-                'label' => 'registerForm.confirmPasswordLabel',
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'registerForm.passwordLabel'),
                 'second_options' => array('label' => 'registerForm.confirmPasswordLabel'),

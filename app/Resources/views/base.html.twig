@@ -3,7 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %}Login !{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
@@ -11,7 +14,7 @@
     <div id="header">
         <div id="logo">
             <h1>
-                <a href="/">Hangman</a>
+                <a href="{{ path('Game') }}">Hangman</a>
             </h1>
         </div>
         <div id="menu">
@@ -19,12 +22,14 @@
                 <li class="first current_page_item">
                     <a href="{{ path('Game') }}">Game</a>
                 </li>
+                {%  if app.user is null %}
                 <li>
                     <a href="{{ path('Register') }}">Register</a>
                 </li>
                 <li>
                     <a href="{{ path('Login') }}">Login</a>
                 </li>
+                {% endif %}
                 <li>
                     <a href="{{ path('Contact') }}">Contact</a>
                 </li>
@@ -34,16 +39,6 @@
     </div>
 
     <div id="page">
-
-        <div>
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-
-
         <div id="content">
             {% block content %}{% endblock %}
         </div>
