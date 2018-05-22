@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\MyMailer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,7 @@ class ContactController extends Controller
      * )
      * @return Response
      */
-    public function contactAction(Request $request){
+    public function contactAction(Request $request, MyMailer $myMailer){
 
         $contact = new Contact();
         dump($contact);
@@ -35,7 +36,10 @@ class ContactController extends Controller
                     ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            dump($form->getData());
+            $this->addFlash('success', 'Demande de contact reçu');
+
+            $myMailer->sendMessageFromContact($contact);
+
         }
         return $this->render('contact/contact.html.twig', [
             'form' => $form->createView()
