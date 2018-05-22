@@ -5,3 +5,9 @@ form.sendLabel: Envoyer
 form.emailLabel: Courriel
 form.subjectLabel: Sujet
 form.messageLabel: Message
+
+
+registerForm.sendLabel: Send
+registerForm.emailLabel: Courriel
+registerForm.passwordLabel: Mot de passe
+registerForm.confirmPasswordLabel: Confirmer votre mot de passe

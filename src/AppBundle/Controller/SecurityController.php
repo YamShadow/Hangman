@@ -16,19 +16,6 @@ class SecurityController extends Controller
 {
 
     /**
-     * Route register
-     * @Route(
-     *  "/register",
-     *  name="Register",
-     * )
-     * @return Response|void
-     */
-    public function register(){
-        return $this->render('security/register.html.twig');
-
-    }
-
-    /**
      * Route login
      * @Route(
      *  "/login",

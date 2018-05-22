@@ -5,3 +5,8 @@ form.sendLabel: Send
 form.emailLabel: Email
 form.subjectLabel: Subject
 form.messageLabel: Message
+
+registerForm.sendLabel: Send
+registerForm.emailLabel: Email
+registerForm.passwordLabel: Password
+registerForm.confirmPasswordLabel: Confirm Password
