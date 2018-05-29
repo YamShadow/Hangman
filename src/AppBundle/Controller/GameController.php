@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Services\Dictionnary;
+use AppBundle\Services\Game;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,15 +30,44 @@ class GameController extends Controller
      */
     public function indexAction(Dictionnary $dictionnary)
     {
+        //
 
-        //1. Créer le service dictionnary
-        //2. Récupérer le service dans cette méthode
-        //3. Définir un tableau de mots dans le service (constante ? ... )
-        //4. La méthode getRandom() du service doit renvoyer le mot aléatoire
+        $game = $this->get('session')->get('game');
+        //$game = null;
+        if($game === null) {
 
-        $word = $dictionnary->getRandom();
-        dump($word);
-        return $this->render('game/game.html.twig');
+            $word = $dictionnary->getRandom();
+            $game = new Game($word);
+
+            $this->get('session')->set('game', $game);
+
+        }
+
+        dump($game);
+
+        return $this->render('game/game.html.twig', [
+            'game' => $game,
+        ]);
+    }
+
+    /**
+    * Route game
+    * @Route(
+    *     "/game/letter/{letter}",
+    *     name="tryLetter",
+     *     requirements={"letter"="[A-Z]"}
+    * )
+    * @return Response
+    */
+    public function tryLetter(Request $request, String $letter) {
+
+        $game = $this->get('session')->get('game');
+
+        if($game) {
+            $game->tryLetter($letter);
+        }
+
+        return $this->redirectToRoute('Game');
     }
 
     /**
@@ -62,6 +92,20 @@ class GameController extends Controller
      */
     public function failed(Request $request){
         return $this->render('game/failed.html.twig');
+    }
+
+    /**
+     * Route game
+     * @Route(
+     *     "/reset",
+     *     name="resetGame",
+     * )
+     * @return Response
+     */
+    public function resetAction() {
+        $this->get('session')->remove('game');
+
+        return $this->redirectToRoute('Game');
     }
 
 
